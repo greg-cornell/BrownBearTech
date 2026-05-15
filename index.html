@@ -1,115 +1,515 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brown Bear Technologies</title>
+  <meta name="description" content="Brown Bear Technologies develops embedded systems, connectivity solutions, and practical technology for rugged environments and meaningful missions." />
+  <title>Brown Bear Technologies</title>  <style>
+    :root {
+      --bg: #0d0d0b;
+      --bg-soft: #171612;
+      --text: #f4efe6;
+      --muted: #b8ada0;
+      --line: rgba(244, 239, 230, 0.16);
+      --accent: #b47a3c;
+      --accent-soft: rgba(180, 122, 60, 0.18);
+      --max-width: 1120px;
+    }
 
-  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
+      overflow-x: hidden;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #f5f5f5;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 80px 30px;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(180, 122, 60, 0.22), transparent 34%),
+        radial-gradient(circle at 85% 25%, rgba(108, 85, 54, 0.22), transparent 32%),
+        linear-gradient(180deg, rgba(13, 13, 11, 0.1), rgba(13, 13, 11, 1));
+      z-index: -2;
     }
 
-    h1 {
-      font-size: 4rem;
-      margin-bottom: 20px;
-      font-weight: 500;
-    }
-
-    h2 {
-      margin-top: 80px;
-      font-size: 2rem;
-      font-weight: 400;
-    }
-
-    p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-
-    .hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-    }
-
-    .contact {
-      margin-top: 40px;
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 65%);
+      z-index: -1;
     }
 
     a {
-      color: #ddd;
+      color: inherit;
+      text-decoration: none;
     }
 
-    a:hover {
-      color: white;
+    .hero-logo-wrap {
+      position: absolute;
+      top: 96px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(92vw, 1200px);
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      opacity: 0.22;
+      z-index: 0;
     }
-  </style>
-</head>
 
-<body>
+    .hero-logo {
+      width: min(100%, 980px);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 40px rgba(0,0,0,0.6));
+    }
 
-  <section class="hero">
-    <div class="container">
-      <h1>Technology for the real world.</h1>
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
 
-      <p>
-        Brown Bear Technologies develops embedded systems,
-        connectivity solutions, and intelligent products for rugged
-        environments and meaningful missions.
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(13, 13, 11, 0.68);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.92rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(244, 239, 230, 0.3);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-size: 0.8rem;
+      letter-spacing: 0;
+    }
+
+    .links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 128px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      max-width: 960px;
+      margin: 0;
+      font-size: clamp(3.3rem, 8.2vw, 8.4rem);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      font-weight: 620;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 34px 0 0;
+      font-size: clamp(1.12rem, 2vw, 1.45rem);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 42px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(244, 239, 230, 0.04);
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--accent-soft);
+      border-color: rgba(180, 122, 60, 0.5);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: rgba(244, 239, 230, 0.08);
+      border-color: rgba(244, 239, 230, 0.3);
+    }
+
+    section {
+      padding: 108px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.4fr;
+      gap: clamp(36px, 7vw, 100px);
+      align-items: start;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 4.2rem);
+      line-height: 1;
+      letter-spacing: -0.045em;
+      font-weight: 580;
+    }
+
+    .section-copy p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+
+    .section-copy p.lead {
+      color: var(--text);
+      font-size: clamp(1.28rem, 2.2vw, 1.9rem);
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .card {
+      min-height: 260px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(244, 239, 230, 0.055), rgba(244, 239, 230, 0.022));
+    }
+
+    .card span {
+      display: block;
+      color: var(--accent);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 700;
+      margin-bottom: 56px;
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .beliefs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .belief {
+      padding: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .belief strong {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+    }
+
+    .belief p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-panel {
+      padding: clamp(32px, 6vw, 64px);
+      border-radius: 32px;
+      border: 1px solid rgba(180, 122, 60, 0.35);
+      background:
+        linear-gradient(135deg, rgba(180, 122, 60, 0.18), transparent 52%),
+        rgba(244, 239, 230, 0.045);
+    }
+
+    .contact-panel p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+
+    .email {
+      display: inline-flex;
+      margin-top: 24px;
+      color: var(--text);
+      font-size: clamp(1.25rem, 3vw, 2.2rem);
+      letter-spacing: -0.035em;
+      border-bottom: 1px solid rgba(244, 239, 230, 0.35);
+    }
+
+    footer {
+      padding: 32px 0;
+      color: rgba(244, 239, 230, 0.45);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-logo-wrap {
+        top: 120px;
+        opacity: 0.16;
+      }
+
+      .hero-logo {
+        width: 140%;
+        max-width: none;
+      }
+
+      .links {
+        display: none;
+      }
+
+      .section-grid,
+      .cards,
+      .beliefs {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: auto;
+      }
+
+      .card span {
+        margin-bottom: 32px;
+      }
+
+      section {
+        padding: 82px 0;
+      }
+    }
+  </style></head><body>
+  <div class="hero-logo-wrap">
+    <img src="logo.png" alt="Brown Bear Technologies Logo" class="hero-logo" />
+  </div>
+  <header>
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Brown Bear Technologies home">
+        <span class="mark">BB</span>
+        <span>Brown Bear Technologies</span>
+      </a>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#principles">Principles</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Technology for good</div>
+        <h1>Engineering for the real world.</h1>
+        <p>
+          Brown Bear Technologies develops embedded systems, connectivity solutions,
+          and practical products for rugged environments and meaningful missions.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#contact">Start a conversation</a>
+          <a class="button" href="#work">Explore our focus</a>
+        </div>
+      </div>
+    </section><section id="about">
+  <div class="wrap section-grid">
+    <h2>Built for the messy middle.</h2>
+    <div class="section-copy">
+      <p class="lead">
+        We work where product vision, systems engineering, embedded electronics,
+        software, connectivity, and field realities all collide.
       </p>
-
       <p>
-        Transportation. Industrial. Agriculture.
-        Wildlife & conservation.
+        Brown Bear Technologies exists to help useful ideas become dependable systems.
+        We are intentionally small, practical by nature, and comfortable operating in
+        the uncertain space between concept and deployment.
+      </p>
+      <p>
+        Our work is grounded in the belief that technology should serve people,
+        strengthen industries, and contribute positively to the environments and
+        communities around it.
       </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <div class="container">
-      <h2>About</h2>
+<section id="work">
+  <div class="wrap">
+    <div class="section-grid">
+      <h2>Where we focus.</h2>
+      <div class="section-copy">
+        <p class="lead">
+          Embedded products and connected systems for industries that operate in the physical world.
+        </p>
+      </div>
+    </div>
 
-      <p>
-        Brown Bear Technologies exists in the space between vision
-        and deployment — where embedded electronics, software,
-        connectivity, and real-world operations all intersect.
+    <div class="cards">
+      <article class="card">
+        <span>01</span>
+        <h3>Transportation</h3>
+        <p>Connected embedded systems for vehicles, mobility platforms, and rugged operational environments.</p>
+      </article>
+
+      <article class="card">
+        <span>02</span>
+        <h3>Industrial</h3>
+        <p>Reliable integration, wired and wireless connectivity, and intelligent interfaces for machines and sensors.</p>
+      </article>
+
+      <article class="card">
+        <span>03</span>
+        <h3>Agriculture</h3>
+        <p>Practical technology for monitoring, automation, field operations, and resilient connected equipment.</p>
+      </article>
+
+      <article class="card">
+        <span>04</span>
+        <h3>Wildlife & Conservation</h3>
+        <p>Remote sensing, telemetry, tracking, and connected systems that support stewardship of natural environments.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="wrap section-grid">
+    <h2>Quietly useful technology.</h2>
+    <div class="section-copy">
+      <p class="lead">
+        Not every important technology needs to be loud, trendy, or disruptive.
       </p>
-
       <p>
-        We believe technology should serve people, strengthen
-        industries, and contribute positively to the environments
-        and communities around it.
+        Some of the most valuable systems are the ones that quietly connect,
+        protect, monitor, inform, and enable the people doing meaningful work in the field.
       </p>
     </div>
-  </section>
+  </div>
 
-  <section>
-    <div class="container">
-      <h2>Contact</h2>
-
-      <p>
-        If you're building something ambitious in the physical world,
-        we'd love to hear about it.
-      </p>
-
-      <p class="contact">
-        <a href="mailto:hello@brownbeartechnologies.com">
-          hello@brownbeartechnologies.com
-        </a>
-      </p>
+  <div class="wrap beliefs">
+    <div class="belief">
+      <strong>Field first.</strong>
+      <p>Real environments shape real requirements. We design with operators, constraints, and conditions in mind.</p>
     </div>
-  </section>
+    <div class="belief">
+      <strong>Systems thinking.</strong>
+      <p>Good products require more than good parts. Hardware, software, connectivity, users, and operations all matter.</p>
+    </div>
+    <div class="belief">
+      <strong>Technology for good.</strong>
+      <p>We are drawn to work that helps people move, grow, build, protect, conserve, and understand the world better.</p>
+    </div>
+  </div>
+</section>
 
-</body>
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <div class="eyebrow">Contact</div>
+      <h2>Building something ambitious in the physical world?</h2>
+      <p>
+        Brown Bear Technologies is intentionally small. We take on a limited number
+        of projects and partnerships where thoughtful engineering, product vision,
+        and long-term impact matter.
+      </p>
+      <a class="email" href="mailto:hello@brownbeartech.com">hello@brownbeartech.com</a>
+    </div>
+  </div>
+</section>
+
+  </main>  <footer>
+    <div class="wrap">
+      © <span id="year"></span> Brown Bear Technologies. Built for the real world.
+    </div>
+  </footer>  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script></body>
 </html>
