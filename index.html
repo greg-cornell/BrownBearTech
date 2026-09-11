@@ -147,6 +147,66 @@
       margin-bottom: 0;
     }
 
+    .ipe-launch { align-items: center; }
+    .ipe-intro { min-width: 0; max-width: 620px; }
+    .ipe-intro h2 {
+      font-size: clamp(26px, 3.2vw, 48px);
+      white-space: nowrap;
+    }
+    .ipe-intro h3 {
+      margin: 20px 0 0;
+      font-size: clamp(24px, 2.4vw, 34px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+    }
+    .ipe-summary { margin: 22px 0 28px; color: var(--muted); font-size: 20px; }
+    .ipe-benefits {
+      display: grid;
+      gap: 16px;
+      margin: 0 0 30px;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 17px;
+    }
+    .ipe-benefits strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+    .ipe-details {
+      margin: 0 0 30px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+    .ipe-cta {
+      display: inline-block;
+      max-width: 100%;
+      padding: 14px 22px;
+      background: var(--text);
+      color: var(--bg);
+      border: 1px solid var(--text);
+      font-size: 16px;
+      line-height: 1.45;
+      text-align: center;
+    }
+    .ipe-cta:hover { background: transparent; color: var(--text); }
+    .ipe-cta:focus-visible { outline: 2px solid var(--text); outline-offset: 5px; }
+    .ipe-rendering {
+      min-width: 0;
+      width: 100%;
+      max-width: 620px;
+      margin: 0;
+      justify-self: end;
+    }
+    .ipe-rendering img { display: block; width: 100%; height: auto; }
+    .ipe-rendering figcaption { margin-top: 14px; color: var(--muted); font-size: 14px; }
+    @media (max-width: 820px) {
+      .ipe-summary { font-size: 18px; }
+      .ipe-intro h2 { white-space: normal; }
+      .ipe-rendering { justify-self: start; }
+    }
+
     .focus-list {
       display: grid;
       gap: 22px;
@@ -222,16 +282,14 @@
       </a>
 
       <nav aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#focus">Focus</a>
+        <a href="#ipe">IPe</a>
+        <a href="#services">Services</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main>
       <div class="hero-left">
-        <div class="kicker">Technology for good.</div>
-
         <h1>
           Engineering for the real world.
         </h1>
@@ -254,9 +312,41 @@
 
   <div class="sections">
 
-    <section id="about">
+    <section id="ipe" class="ipe-launch" aria-labelledby="ipe-title">
+      <div class="ipe-intro">
+        <h2 id="ipe-title">IPe &mdash; The Smart Connector</h2>
+        <h3>Connect - Convert - Monitor</h3>
+        <p class="ipe-summary">
+          IPe is a compact smart connector that brings modern connectivity
+          and support capabilities to existing aircraft systems. It can
+          translate between legacy and modern protocols, bridge wired
+          Ethernet to wireless connectivity, continuously monitor connected
+          equipment for health and status, and provide a secure path for
+          remote troubleshooting, maintenance, and software updates.
+        </p>
+        <ul class="ipe-benefits">
+          <li><strong>Continuous health monitoring</strong> &mdash; detect and diagnose problems before they become operational disruptions.</li>
+          <li><strong>Protocol translation</strong> &mdash; connect legacy equipment with modern networks and systems without redesigning the entire installation.</li>
+          <li><strong>Remote maintenance</strong> &mdash; enable troubleshooting, support, and software updates without requiring physical access to every device.</li>
+          <li><strong>Simpler installations</strong> &mdash; reduce dedicated wiring, interface hardware, and integration complexity through intelligent connectivity.</li>
+        </ul>
+        <p class="ipe-details">
+          <strong>IPe stands for &ldquo;IP everything.&rdquo;</strong> Modern systems increasingly use IP as their primary communication method, but many proven products and aircraft systems still rely on interfaces such as RS-485, ARINC 429, discrete I/O, or proprietary protocols. IPe sits between those worlds, translating legacy and specialized interfaces into modern IP-based communications using standards such as MQTT, REST, <u><a href="https://mosaic-aero.com" target="_blank" rel="noopener noreferrer">MOSAIC</a></u>, or custom IP protocols when needed.  IPe can work with any CMS or Connectivity system on the market.
+        </p>
+        <a class="ipe-cta" href="mailto:contact@brownbeartech.com?subject=IPe%20Information%20Request">
+          Request More Information
+        </a>
+      </div>
+      <figure class="ipe-rendering">
+        <img src="ipe-concept-rendering.png"
+             alt="IPe concept rendering showing a metal enclosure with a multi-pin connector and Brown Bear branding."
+             width="1448" height="1086" decoding="async" />
+      </figure>
+    </section>
+
+    <section id="services">
       <h2>
-        Built for the messy middle.
+        Services - built for the messy middle.
       </h2>
 
       <div class="copy">
@@ -272,41 +362,35 @@
           hands-on — built for the uncertain space between
           idea and deployment.
         </p>
-      </div>
-    </section>
 
-    <section id="focus">
-      <h2>
-        Focus areas.
-      </h2>
+        <div class="focus-list">
 
-      <div class="copy focus-list">
+          <div class="focus-item">
+            <strong>Transportation</strong>
+            Connected systems for vehicles, mobility platforms,
+            and rugged operating environments.
+          </div>
 
-        <div class="focus-item">
-          <strong>Transportation</strong>
-          Connected systems for vehicles, mobility platforms,
-          and rugged operating environments.
+          <div class="focus-item">
+            <strong>Industrial</strong>
+            Embedded products, machine connectivity,
+            and wired or wireless integrations.
+          </div>
+
+          <div class="focus-item">
+            <strong>Agriculture</strong>
+            Practical technology for monitoring,
+            automation, and field operations.
+          </div>
+
+          <div class="focus-item">
+            <strong>Wildlife & Conservation</strong>
+            Remote sensing, telemetry, tracking,
+            and systems that support stewardship
+            of natural environments.
+          </div>
+
         </div>
-
-        <div class="focus-item">
-          <strong>Industrial</strong>
-          Embedded products, machine connectivity,
-          and wired or wireless integrations.
-        </div>
-
-        <div class="focus-item">
-          <strong>Agriculture</strong>
-          Practical technology for monitoring,
-          automation, and field operations.
-        </div>
-
-        <div class="focus-item">
-          <strong>Wildlife & Conservation</strong>
-          Remote sensing, telemetry, tracking,
-          and systems that support stewardship
-          of natural environments.
-        </div>
-
       </div>
     </section>
 
@@ -317,8 +401,8 @@
 
       <div class="copy">
         <p>
-          If you're building something ambitious in the physical world,
-          we’d like to hear about it.
+          Interested in IPe?  Building something ambitious in the
+          physical world?  We’d like to hear about it!
         </p>
 
         <p>
@@ -336,9 +420,6 @@
       © <span id="year"></span> Brown Bear Technologies
     </div>
 
-    <div>
-      Built for the real world.
-    </div>
   </footer>
 
   <script>
