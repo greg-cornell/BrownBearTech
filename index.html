@@ -34,6 +34,11 @@
       text-decoration: none;
     }
 
+    a:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 5px;
+    }
+
     .page {
       min-height: auto;
       display: flex;
@@ -220,6 +225,87 @@
       margin-bottom: 4px;
     }
 
+    .about {
+      display: block;
+      padding-top: 88px;
+      padding-bottom: 0;
+    }
+
+    .about-title {
+      margin-bottom: 96px;
+      font-size: clamp(46px, 7vw, 108px);
+      line-height: 0.96;
+      letter-spacing: -0.065em;
+    }
+
+    .about h3,
+    .about h4 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -0.05em;
+      font-weight: 400;
+    }
+
+    .about-intro,
+    .principle {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 60px;
+    }
+
+    .about-intro {
+      padding-bottom: 80px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .about .copy {
+      width: 100%;
+      max-width: 58ch;
+      line-height: 1.6;
+    }
+
+    .principles {
+      padding-top: 72px;
+    }
+
+    .principle {
+      padding: 64px 0;
+    }
+
+    .principle + .principle {
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .principle-number {
+      display: block;
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.06em;
+    }
+
+    .principle h4 {
+      max-width: 15ch;
+      text-wrap: balance;
+    }
+
+    .principle .meaning {
+      margin-top: 32px;
+      color: var(--text);
+      font-size: 17px;
+    }
+
+    .meaning strong {
+      font-weight: 400;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
     footer {
       padding: 32px 44px;
       display: flex;
@@ -231,6 +317,24 @@
 
     .email {
       color: var(--text);
+    }
+
+    @media (min-width: 821px) {
+      header {
+        gap: 32px;
+      }
+
+      header > a {
+        min-width: 0;
+      }
+
+      .logo {
+        max-width: 100%;
+      }
+
+      nav {
+        flex-shrink: 0;
+      }
     }
 
     @media (max-width: 820px) {
@@ -266,6 +370,36 @@
         font-size: 18px;
       }
 
+      .about {
+        padding-top: 56px;
+      }
+
+      .about-title {
+        margin-bottom: 56px;
+      }
+
+      .about-intro,
+      .principle {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .about-intro {
+        padding-bottom: 48px;
+      }
+
+      .principles {
+        padding-top: 48px;
+      }
+
+      .principle {
+        padding: 44px 0;
+      }
+
+      .principle-number {
+        margin-bottom: 16px;
+      }
+
       footer {
         flex-direction: column;
         padding: 28px 24px;
@@ -284,6 +418,7 @@
       <nav aria-label="Main navigation">
         <a href="#ipe">IPe</a>
         <a href="#services">Services</a>
+        <a href="#about">About Us</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -416,6 +551,75 @@
             continued system improvement.
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-title">
+      <h2 id="about-title" class="about-title">About Us.</h2>
+
+      <div class="about-intro">
+        <h3>Who We Are.</h3>
+        <div class="copy">
+          <p>Brown Bear Technologies is a Wisconsin-based aerospace technology company focused on making complex systems work together.</p>
+
+          <p>Founded by Greg Cornell, an engineer and aviation business leader, Brown Bear builds on years of experience developing, integrating, and supporting technology for the aerospace industry. Greg previously served as President of Innovative Advantage, with earlier leadership and product roles at Heads Up Technologies and EMTEQ.</p>
+
+          <p>We combine that experience with a practical, hands-on approach to engineering. From helping aircraft systems communicate to solving complex integration challenges, our focus is on developing useful technology and doing right by the customers who depend on it.</p>
+        </div>
+      </div>
+
+      <div class="principles">
+        <h3>Our Principles.</h3>
+
+        <div class="principle">
+          <div>
+            <span class="principle-number">01</span>
+            <h4>Work Hard.</h4>
+          </div>
+          <div class="copy">
+            <p>We believe meaningful achievements require effort, dedication, and perseverance.</p>
+
+            <p>We work hard for our customers, taking ownership of their challenges and following through on our commitments. We take pride in doing things well, even when nobody is watching.</p>
+
+            <p>We bring that same commitment to our families, our colleagues, and our communities. We value hard work not simply for the hours invested, but for the difference it makes.</p>
+
+            <p class="meaning"><strong>What it means:</strong> Take ownership. Do the difficult things. Deliver on promises. Take pride in your work.</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <div>
+            <span class="principle-number">02</span>
+            <h4>Be Curious.</h4>
+          </div>
+          <div class="copy">
+            <p>We believe curiosity is the foundation of innovation, understanding, and growth.</p>
+
+            <p>We ask questions, challenge assumptions, and never stop learning. We listen before we speak and recognize that the best ideas can come from anywhere.</p>
+
+            <p>We approach problems with humility, knowing that we don't have all the answers. We embrace new technologies, perspectives, and experiences, and we're willing to change our minds when we learn something new.</p>
+
+            <p class="meaning"><strong>What it means:</strong> Listen first. Ask why. Stay humble. Keep learning. Challenge conventional thinking.</p>
+          </div>
+        </div>
+
+        <div class="principle">
+          <div>
+            <span class="principle-number">03</span>
+            <h4>Leave the World a Better Place.</h4>
+          </div>
+          <div class="copy">
+            <p>We believe a successful business should make a positive difference beyond its products and profits.</p>
+
+            <p>We do what's right for our customers, even when it's not the easiest or most profitable choice. We treat colleagues, partners, and suppliers with fairness, honesty, and respect.</p>
+
+            <p>We strive to build a company where people can do meaningful work, have fulfilling lives, and be proud of what they contribute.</p>
+
+            <p>We give back to the communities that support us, invest in causes that improve lives, and recognize that our responsibility extends beyond our own success.</p>
+
+            <p class="meaning"><strong>What it means:</strong> Do the right thing. Put people first. Give back. Build something worth being proud of.</p>
+          </div>
         </div>
       </div>
     </section>
